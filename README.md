@@ -1,1 +1,1 @@
-<h1><code>Comming Soon</code></h1>
+<h1 align="center"><code>Comming Soon</code></h1>
