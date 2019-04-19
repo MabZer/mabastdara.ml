@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif');
+
+body {
+      font-family: 'Bree Serif', serif;
+}
+
+.pagination {
+  display: inline-block;
+  width: 100%;
+}
+
+.pagination a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px 2px;
+  cursor: pointer;
+}
+
+.button a {
+  color: white;
+  text-decoration: none;
+}
+
+.button a:visited {
+  color: white;
+}
