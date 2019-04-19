@@ -1,0 +1,464 @@
+@import 'compass/css3';
+
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{"$animationName"} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+
+  @-ms-keyframes #{$animationName} {
+    @content;
+  }
+
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@function randomNum($min, $max) {
+  $rand: random();
+  $randomNum: $min + floor($rand * (($max - $min) + 1));
+
+  @return $randomNum;
+} 
+
+$background: #140e35;
+$moon-shine: rgba(157, 229, 253, 0.59);
+$pink-shine:rgba(253, 157, 238, 0.5);
+html,body {
+	background:$background;
+	height:100%;
+	overflow:hidden;
+	width:100%;
+}
+
+.centered {
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;bottom:0;
+	margin:auto;
+}
+.night-sky{
+	@extend .centered;
+	width:80%;
+	height:100%;
+	@include background(radial-gradient(circle, $pink-shine, transparent 40%));
+	ul li{
+		position:absolute;
+		list-style:none;
+	}
+	$width_height:0;
+
+	.stars {
+		width:170px;
+		top: 20%;
+		position: absolute;
+		z-index: 999;
+		left: 30%;
+		@include transform(scale(0.8));
+		div:nth-child(1) {
+			width:20px;
+			position:relative;
+			height: 6px;
+			@include border-radius(100%);
+			background:#fff;
+			@include animation(twinkle-width 1s ease infinite);
+		}
+		div:nth-child(2) {
+			width:6px;
+			height:20px;
+			top:-5px;
+			position:absolute;
+			background:#fff;
+			@include border-radius(100%);
+			left:7px;
+			top: -7px;
+			transform-origin:middle;
+			@include animation(twinkle-height 1s ease infinite);
+		}	
+		
+		div:nth-child(3) {
+				background:#fff;
+				content: "";
+				position:absolute;
+				width:10px;
+				height:10px;
+				left: 5px;
+				top:-2px;
+				@include border-radius(100px);
+		}
+	}
+	
+	.stars:nth-child(3) {
+		left:40%;
+		top:10%;
+		@include transform(scale(0.6));
+		div {
+			@include animation-duration(1.5s);
+		}
+	}
+	
+	.stars:nth-child(4) {
+		left:65%;
+		top:25%;
+		@include transform(scale(0.4));
+		div {
+			@include animation-delay(0.5s);
+		}
+	}
+	.stars:nth-child(5) {
+		left:55%;
+		top:45%;
+		@include transform(scale(0.7));
+		div {
+			@include animation-duration(2.5s);
+		}
+	}
+	@for $i from 1 through 15 {
+		$width_height:randomNum(2,6);
+		li:nth-child(#{$i}) {
+			left:randomNum(30%,80%);
+			top:randomNum(50,300)+px;
+			width:$width_height+px;
+			height:$width_height+px;
+			@include background(linear-gradient(to right, $moon-shine, transparent));
+			@include border-radius(100px);
+			@include animation(twinkle 1s ease infinite);
+			opacity:0;
+			@include animation-delay(randomNum(0.2,0.8)+s);
+			@include animation-duration(randomNum(1,1.8)+s);
+		}	
+	}
+	
+	.clouds {
+		position:absolute;
+		display:block;
+		left:30%;
+		top:40%;
+		opacity:0.4;
+		div:nth-child(1) {
+			width:80px;
+			height:80px;
+			@include border-radius(100px);
+			background:#fff;
+			position:absolute;
+		}
+		
+		div:nth-child(2) {
+			@extend div:nth-child(1);
+			width:90px;
+			height:90px;
+			left: -40px;
+			top: 30px;
+		}
+		
+		div:nth-child(3) {
+			@extend div:nth-child(1);
+			width:60px;
+			height:60px;
+			left: 60px;
+			top: 40px;
+		}
+		div:nth-child(4) {
+			@extend div:nth-child(1);
+			width:60px;
+			height:60px;
+			left: 20px;
+			top: 40px;
+		}
+	}
+	
+	.clouds:nth-child(6) {
+		left:60%;
+		top: 40%;
+		@include transform(scale(0.7));
+	}
+}
+.moon {
+	@extend .centered;
+	width:120px;
+	height:120px;
+	@include border-radius(100%);
+	background:#fff;
+	top:-35%;
+	box-shadow:0px 20px 50px $moon-shine;
+	&::before {
+		content:'';
+		position:absolute;
+		width:30px;
+		height:30px;
+		@include border-radius(100px);
+		background:rgba(0, 0, 0, 0.05);
+		@include background(linear-gradient(to bottom, rgba(0,0,0,0.05), transparent 40%));	
+		@include transform(rotate(-60deg));
+		top: 40px;
+		left: 82px;
+	}
+	&::after {
+		content:'';
+		position:absolute;
+		width:50px;
+		height:50px;
+		@include border-radius(100px);
+		top: 80px;
+		left: 25px;
+		background:rgba(0, 0, 0, 0.05);
+		@include background(linear-gradient(to bottom, rgba(0,0,0,0.05), transparent 40%));	
+		@include transform(rotate(-20deg));
+
+	}
+	ul li {
+		list-style:none;
+		background:#fff;
+		@include background(radial-gradient(circle, #fff 0%, transparent 90%));
+		position:absolute;
+		@include border-radius(100%);
+		opacity:0.2;
+		@include transform(scale(1));
+		@include transition(all 0.5s ease);
+		@include animation(moon-glow 6s ease infinite);
+	}
+	li:nth-child(1) {
+		width:120%;
+		height:120%;
+		left:-10px;
+		top:-10px;
+	}
+	li:nth-child(2) {
+		width:140%;
+		height:140%;
+		left:-22.5px;
+		top:-22.5px;
+		@include animation-delay(1s);
+	}
+	
+	li:nth-child(3) {
+		width:160%;
+		height:160%;
+		left:-35px;
+		top:-35px;
+		@include animation-delay(2s);
+	}
+}
+.sea-horizon {
+	display:block;
+	width:80%;
+	@include background(linear-gradient(to right, $background 27%, $pink-shine 48% , $background 73%));
+	height:100%;
+	@extend .centered;
+	top:100%;
+	position:absolute;
+	&::after {
+		position:absolute;
+		content:"";
+		width:100%;
+		height:100%;
+		top:3px;
+		background:$background;
+	}
+	.sea-shine {
+		width:40%;
+		@extend .centered;
+		left:-5%;
+	}
+	ul li {
+		list-style:none;
+		display:block;
+		position:absolute;
+		z-index:2;
+		@include transition(all 0.2s ease);
+	}
+	
+	@for $i from 1 through 12{
+		$val1 : 4px;
+		$val2: 5px;
+		$color: $pink-shine;
+		$left:50%;
+		@if($i==2) {
+			$left:44%;
+		}
+		@if($i >= 3) {
+			$left:52%;
+			$val1 :5px;
+			$val2:6px;
+			$color:rgba(253, 157, 238, 0.4);
+		}
+		
+		@if($i >= 4) {
+			$val1 :5px;
+			$left:36%;
+			$val2:6px;
+			$color:rgba(253, 157, 238, 0.35);
+		}
+		
+		@if($i >= 5) {
+			$left:54%;
+			$val1 :6px;
+			$val2:7px;
+			$color: rgba(255,255,255,0.5);
+		}
+		@if($i >= 6) {
+			$left:38%;
+			$val1 :8px;
+			$val2:9px;
+			$color: rgba(255,255,255,0.4);
+		}
+		
+		@if($i == 7) {
+			$left:48%;
+			$color: rgba(255,255,255,0.3 );
+		}
+		
+		@if($i == 8) {
+			$left:32%;
+			$val1 :9px;
+			$val2:10px;
+			$color: rgba(255,255,255,0.2 );
+		}
+		@if($i >= 9) {
+			$left:55%;
+			$val1 :8px;
+			$val2:9px;
+			$color: rgba(255,255,255,0.1 );
+		}
+		@if($i == 10) {
+			$left:50%;
+			$color: rgba(255,255,255,0.05 );
+		}
+		@if($i == 11) {
+			$left:85%;
+		}
+		@if($i == 12) {
+			$left:25%;
+		}
+		
+		$background-gradient:radial-gradient(circle at 0% 50%, rgba(204, 0, 0, 0) $val1, $color $val2);
+		@if($i%2==0) {
+			$background-gradient:radial-gradient(circle at 100% 50%, rgba(204, 0, 0, 0) $val1, $color $val2);
+		} //end of if statement
+		
+		li:nth-child(#{$i}) {
+			@include background($background-gradient);
+			left: $left;
+			@include animation(sea-glow#{$i} 4s ease infinite);
+		}
+		$left_anim: $left+2;
+		@if($i%2==0) {
+			$left_anim: $left - 1;
+		}
+		@include keyframes(sea-glow#{$i}) {
+			0%{left:$left;}
+			50%{left:$left_anim;}
+		}
+	} //end of for loop
+	li:nth-child(1) {
+		$height:6;
+		width:60px;
+		height:$height+px;
+		@include border-radius(100px);
+		top:3px;
+	}
+	li:nth-child(2) {
+		@extend li:nth-child(1);
+		top:9px;
+		height:8px;
+		width:75px;
+	}
+	li:nth-child(3) {
+		@extend li:nth-child(1);
+		top:17px;
+		width:105px;
+		height:8.5px;
+	}
+	
+	li:nth-child(4) {
+		@extend li:nth-child(1);
+		top:25px;
+		width:125px;
+		height:10px;
+	}
+	
+	li:nth-child(5) {
+		@extend li:nth-child(1);
+		top:35px;
+		width:145px;
+		height:12px;
+	}
+	
+	li:nth-child(6) {
+		@extend li:nth-child(1);
+		top:47px;
+		width:165px;
+		height:12px;
+	}
+	li:nth-child(7) {
+		@extend li:nth-child(1);
+		top:59px;
+		width:165px;
+		height:14px;
+	}
+	
+	li:nth-child(8) {
+		@extend li:nth-child(1);
+		top:73px;
+		width:175px;
+		height:16px;
+	}
+	li:nth-child(9) {
+		@extend li:nth-child(1);
+		top:89px;
+		width:105px;
+		height:12px;
+	}
+	
+	li:nth-child(10) {
+		@extend li:nth-child(1);
+		top:101px;
+		width:85px;
+		height:10px;
+	}
+	li:nth-child(11) {
+		@extend li:nth-child(1);
+		top:89px;
+		width:15px;
+		height:10px;
+		background:rgba(255,255,255,0.1);
+	}
+	li:nth-child(12) {
+		@extend li:nth-child(1);
+		top:101px;
+		width:25px;
+		height:10px;
+		background:rgba(255,255,255,0.05);
+	}
+} //end of sea-horizon
+
+@include keyframes(twinkle) {
+	0%{opacity:0}
+	50%{opacity:1}
+}
+
+@include keyframes(moon-glow) {
+	0%{@include transform(scale(1));}
+	50%{@include transform(scale(1.1));}
+}
+@include keyframes(twinkle-height) {
+	0% { height: 20px;top:-7px}
+	50% { height: 10px; top:-3px}
+	100% { height: 20px;top:-7px}
+}
+
+@include keyframes(twinkle-width) {
+	0% { width: 20px;left:0px}
+	50% { width: 10px; left:5px}
+	100% { width: 20px;left:0px}
+}
+
+@include keyframes(twinkle) {
+	0%{opacity:0}
+	50%{opacity:1}
+	100%{opacity:0}
+}
