@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <title>Mabast Raouf</title>
     <meta charset="utf-8">
@@ -18,6 +19,13 @@
         margin: 0;
         padding: 0;
         font-family: 'Inconsolata', monospace;
+        background: #C9FFBF;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #FFAFBD, #C9FFBF);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #FFAFBD, #C9FFBF);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     }
 
     .container {
@@ -33,9 +41,15 @@
         font-size: 20px;
     }
 
-    #islam {
-        font-size: 24px;
-        margin: 20px;
+    iframe {
+        background: #00d2ff;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #3a7bd5, #00d2ff);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
     }
 
     .footer {
@@ -44,7 +58,13 @@
         left: 0;
         bottom: 0;
         width: 100%;
-        background-color: #4CAF50;
+        background: #00d2ff;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #3a7bd5, #00d2ff);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
         color: white;
         text-align: center;
         letter-spacing: 1px;
@@ -57,20 +77,22 @@
 <body>
     <div class="container" id="base">
         <div class="item">
-        	🌈<br><br>
+            <iframe width="781" height="536" src="https://www.youtube.com/embed/uxUATkpMQ8A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!-- 🌈<br><br>
             "If you think you're the smartest person in the room, you're in the wrong room...<br><br>
-             and you've always been in the wrong room."
+             and you've always been in the wrong room." -->
             <!-- Why don't you stick to what you know and leave your opinions wherever the fuck? -->
         </div>
     </div>
     <div class="footer">
-        <p id="quote">Even if you're one in a million, there are 7,098 replacements for you.</p>
+        <p id="quote">
+            <!-- Even if you're one in a million, there are 7,098 replacements for you. -->
+        </p>
     </div>
-        <iframe src="audio/silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+    <!-- <iframe src="audio/silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
     <audio id="player" autoplay loop>
         <source src="audio/song.mp3" type="audio/mp3">
-    </audio>
+    </audio> -->
 </body>
 
 </html>
-
