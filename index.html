@@ -1,94 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
     <title>Mabast Raouf</title>
-    <meta name="author" content="Mabast Raouf">
-    <meta name="keywords" content="Mabast, Mabast Dara, Mabast Raouf, allbymabast, mabast, photographer" />
-    <meta name="description" content="Medical Student, Photographer, and a Simple Human Being!" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mabast Dara Raouf">
+    <meta name="keywords" content="" />
+    <meta name="description" content="Oink Oink" />
     <link rel="shortcut icon" href="https://data.whicdn.com/images/19000859/superthumb.gif?t=1323359981" type="image/x-icon" />
-    <meta name="theme-color" content="#001f3f">
+    <meta name="theme-color" content="#fff">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="./style.css">
-    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Cardo" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125012328-4"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+    <meta property="og:image" content="https://images.unsplash.com/photo-1509492039673-c15911b3dcad?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=81783b3c329e12412836d8d304104819&auto=format&fit=crop&w=1350&q=80" />
+    <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
+    <style type="text/css">
+    body {
+        color: #72727e;
+        margin: 0;
+        padding: 0;
+        font-family: 'Inconsolata', monospace;
+    }
 
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
 
-    gtag('config', 'UA-125012328-4');
-    </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-      <![endif]-->
+    .item {
+        text-align: center;
+        letter-spacing: 1px;
+        font-size: 20px;
+    }
+
+    #islam {
+        font-size: 24px;
+        margin: 20px;
+    }
+
+    .footer {
+        font-family: 'Inconsolata', monospace;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+        letter-spacing: 1px;
+        font-weight: bolder;
+    }
+    </style>
+</head>
 </head>
 
 <body>
-    <section>
-        <div class="content"></div>
-    </section>
-    <div id="preloader">
-        <div id="status">
-            <div class="spinner">
-                <div class="rect1"></div>
-                <div class="rect2"></div>
-                <div class="rect3"></div>
-                <div class="rect4"></div>
-                <div class="rect5"></div>
-            </div>
-        </div>
-        <div id="msg"> “Every man has two lives and the second starts when he realizes he has just one.” <br><br><br><br><small>Loading...</small></div>
-    </div>
-    <div class="stage">
-        <div class="scene">
-            <div class="halo">
-                <i></i>
-                <span class="halo-star"></span>
-                <span class="halo-star"></span>
-                <span class="halo-star"></span>
-                <i></i>
-                <i></i>
-                <i></i>
-            </div>
-            <div class="lantern">
-                <div class="lantern-handle"></div>
-                <div class="lantern-inner">
-                    <div class="lantern-chain"></div>
-                    <div class="lantern-head"></div>
-                    <div class="lantern-body">
-                        <div class="lantern-spark"></div>
-                        <div class="lantern-spark"></div>
-                        <div class="lantern-spark"></div>
-                        <div class="lantern-flame"></div>
-                    </div>
-                    <div class="lantern-base"></div>
-                </div>
-            </div>
-            <div class="planets">
-                <div class="planet"></div>
-                <div class="planet"></div>
-                <div class="planet"></div>
-                <div class="planet"></div>
-                <div class="planet"></div>
-                <div class="planet"></div>
-            </div>
+    <div class="container" id="base">
+        <div class="item">
+        	🌈<br><br>
+            "If you think you're the smartest person in the room, you're in the wrong room...<br><br>
+             and you've always been in the wrong room."
+            <!-- Why don't you stick to what you know and leave your opinions wherever the fuck? -->
         </div>
     </div>
-    <iframe src="audio/silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+    <div class="footer">
+        <p id="quote">Even if you're one in a million, there are 7,098 replacements for you.</p>
+    </div>
+        <iframe src="audio/silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
     <audio id="player" autoplay loop>
         <source src="audio/song.mp3" type="audio/mp3">
     </audio>
-    <script>
-    $(window).load(function() { // makes sure the whole site is loaded
-        $("#status").fadeOut(); // will first fade out the loading animation
-        $("#preloader").delay(500).fadeOut("slow"); // will fade out the white DIV that covers the website.
-    })
-    </script>
 </body>
 
 </html>
+
